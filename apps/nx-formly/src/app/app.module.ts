@@ -12,6 +12,7 @@ import { NgxsModule } from '@ngxs/store';
 import { RoutedModule } from './routed/routed.module';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -26,7 +27,8 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
     }),
     RoutedModule,
     NgxsRouterPluginModule.forRoot(),
-    NgxsFormPluginModule.forRoot()
+    NgxsFormPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
