@@ -34,8 +34,8 @@ export class DashboardComponent implements OnInit {
     //
   }
 
-  onSubmit() {
-    console.log(this.model);
+  onSubmit(form: FormGroup) {
+    console.log('Form: ', form);
   }
 
 }
