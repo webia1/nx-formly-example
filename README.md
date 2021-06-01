@@ -2,7 +2,7 @@
 
 # NxFormly
 
-This project was generated using [Nx](https://nx.dev).
+An Empty Formly Project - Generated using [Nx](https://nx.dev).
 
 ## Includes:
 
