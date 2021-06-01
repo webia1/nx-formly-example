@@ -6,9 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DashboardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -18,5 +19,8 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+    DashboardComponent
+  ],
 })
 export class AppModule {}
