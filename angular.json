@@ -51,7 +51,7 @@
               "apps/nx-formly/src/favicon.ico",
               "apps/nx-formly/src/assets"
             ],
-            "styles": ["apps/nx-formly/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/nx-formly/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
