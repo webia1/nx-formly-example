@@ -13,6 +13,8 @@ import { RoutedModule } from './routed/routed.module';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -28,7 +30,9 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
     RoutedModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot()
+    NgxsStoragePluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsDispatchPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
