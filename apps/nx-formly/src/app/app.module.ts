@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxsModule } from '@ngxs/store';
 import { RoutedModule } from './routed/routed.module';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -24,7 +25,8 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
       developmentMode: !environment.production
     }),
     RoutedModule,
-    NgxsRouterPluginModule.forRoot()
+    NgxsRouterPluginModule.forRoot(),
+    NgxsFormPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -44,6 +44,7 @@
     "@ngxs/form-plugin": "^3.7.2",
     "@ngxs/logger-plugin": "^3.7.2",
     "@ngxs/router-plugin": "^3.7.2",
+    "@ngxs/storage-plugin": "^3.7.2",
     "@ngxs/store": "^3.7.2",
     "@nrwl/angular": "12.3.4",
     "@oblique/oblique": "^6.1.4",
