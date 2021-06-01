@@ -10,6 +10,7 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxsModule } from '@ngxs/store';
 import { RoutedModule } from './routed/routed.module';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -22,7 +23,8 @@ import { RoutedModule } from './routed/routed.module';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
-    RoutedModule
+    RoutedModule,
+    NgxsRouterPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
