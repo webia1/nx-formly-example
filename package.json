@@ -61,6 +61,7 @@
     "@angular/compiler-cli": "12.0.0",
     "@angular/language-service": "12.0.0",
     "@ngx-formly/schematics": "^5.10.21",
+    "@ngxs/devtools-plugin": "^3.7.2",
     "@nrwl/cli": "12.3.4",
     "@nrwl/cypress": "12.3.4",
     "@nrwl/eslint-plugin-nx": "12.3.4",
