@@ -43,7 +43,9 @@
     "@oblique/oblique": "^6.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@ngx-formly/core": "^5.0.0",
+    "@ngx-formly/material": "^5.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "12.0.0",
@@ -53,6 +55,7 @@
     "@angular/cli": "12.0.0",
     "@angular/compiler-cli": "12.0.0",
     "@angular/language-service": "12.0.0",
+    "@ngx-formly/schematics": "^5.10.21",
     "@nrwl/cli": "12.3.4",
     "@nrwl/cypress": "12.3.4",
     "@nrwl/eslint-plugin-nx": "12.3.4",
