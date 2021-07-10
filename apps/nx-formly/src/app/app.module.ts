@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,8 +18,13 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 
 // Angular Materian Module
+import { MatTabsModule } from '@angular/material/tabs';
 
-import {MatTabsModule} from '@angular/material/tabs';
+// Validation Message Functions
+
+export function minValidationMessage(err: any) {
+  return `Min value ${err.min}. Your value: ${err.actual}`;
+}
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -26,11 +32,23 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot({ extras: { lazyRender: true } }),
+    FormlyModule.forRoot({
+      extras: { lazyRender: true },
+      validationMessages: [
+        {
+          name: 'required',
+          message: 'This field is required',
+        },
+        {
+          name: 'min',
+          message: minValidationMessage,
+        },
+      ],
+    }),
     FormlyMaterialModule,
     AppRoutingModule,
     NgxsModule.forRoot([], {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
     }),
 
     MatTabsModule,
@@ -39,12 +57,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     NgxsFormPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsDispatchPluginModule.forRoot()
+    NgxsDispatchPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [
-    DashboardComponent
-  ],
+  exports: [DashboardComponent],
 })
 export class AppModule {}

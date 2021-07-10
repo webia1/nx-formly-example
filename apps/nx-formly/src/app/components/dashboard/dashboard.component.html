@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1>Mission Dashboard</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
   <formly-form
     [form]="form"
@@ -12,6 +12,9 @@
   <mat-tab-group>
     <mat-tab label="form.value">
       <pre><code>{{form?.value | json}}</code></pre>
+    </mat-tab>
+    <mat-tab label="model">
+      <pre><code>{{model| json}}</code></pre>
     </mat-tab>
   </mat-tab-group>
 </div>

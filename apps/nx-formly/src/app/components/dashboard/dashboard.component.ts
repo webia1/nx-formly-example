@@ -20,8 +20,9 @@ import { map, startWith, switchMap, tap } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
   form = new FormGroup({});
   model = {
+    id: 4711,
     name: 'James Bond',
-    email: 'jb@example.com',
+    teamsize: 4,
     city: 'UK-1',
     country: 'UK',
   };
@@ -30,28 +31,42 @@ export class DashboardComponent implements OnInit {
   constructor(private ds: DataService) {
     this.fields = [
       {
+        key: 'id',
+      },
+      {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Name',
+          label: 'Agent Name',
           placeholder: 'Enter name',
+          required: true,
         },
       },
       {
-        key: 'email',
+        key: 'teamsize',
         type: 'input',
         templateOptions: {
-          label: 'Email address',
-          placeholder: 'Enter email',
+          type: 'number',
+          label: 'Desired team size',
+          placeholder: 'Enter desired team size',
           required: true,
+          min: 3,
+          max: 70,
+        },
+        validation: {
+          messages: {
+            max: 'Max team size is 70!',
+          },
         },
       },
       {
         key: 'city',
         type: 'select',
+
         templateOptions: {
           label: 'Available Missions',
           placeholder: 'Current mission in',
+          required: true,
           options: this.ds.getCities(),
         },
       },
@@ -59,10 +74,14 @@ export class DashboardComponent implements OnInit {
         key: 'country',
         type: 'select',
         templateOptions: {
-          label: 'Country of the selected city',
+          label: 'Country of the selected misson',
           options: this.ds.getCountries(),
+          readonly: true,
         },
-        hooks: {
+        expressionProperties: {
+          'model.country': 'model.city.slice(0, 2)',
+        },
+        /*         hooks: {
           onInit: (field?: FormlyFieldConfig) => {
             if (field && field.templateOptions && field.form) {
               field.templateOptions.options = field.form
@@ -70,12 +89,14 @@ export class DashboardComponent implements OnInit {
                 ?.valueChanges.pipe(
                   startWith(this.model.country),
                   switchMap((cityValue) =>
-                    this.ds.getCountries(cityValue.slice(0, 2))
+                    this.ds.getCountries(
+                      cityValue ? cityValue.slice(0, 2) : ''
+                    )
                   )
                 );
             }
           },
-        },
+        }, */
       },
     ];
   }
