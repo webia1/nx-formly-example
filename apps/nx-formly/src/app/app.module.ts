@@ -16,6 +16,10 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 
+// Angular Materian Module
+
+import {MatTabsModule} from '@angular/material/tabs';
+
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
   imports: [
@@ -28,6 +32,9 @@ import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
+
+    MatTabsModule,
+
     NgxsRouterPluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot(),

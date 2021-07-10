@@ -1,13 +1,17 @@
-
 <h1>Dashboard</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
-  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+  <formly-form
+    [form]="form"
+    [fields]="fields"
+    [model]="model"
+  ></formly-form>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
-<div style="margin-top: 40px; background-color: #ebebeb; padding: 20px;">
- <h2>form.value ~ formly model</h2>
-  <pre><code>{{form.value | json}}</code></pre>
-  <h2>fields</h2>
-  <pre><code>{{fields | json}}</code></pre>
- </div>
+<div style="margin-top: 60px">
+  <mat-tab-group>
+    <mat-tab label="form.value">
+      <pre><code>{{form?.value | json}}</code></pre>
+    </mat-tab>
+  </mat-tab-group>
+</div>
