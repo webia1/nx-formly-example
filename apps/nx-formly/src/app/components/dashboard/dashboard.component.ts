@@ -76,24 +76,24 @@ export class DashboardComponent implements OnInit {
           readonly: true,
         },
         expressionProperties: {
-          'model.country': 'model.city.slice(0, 2)',
+          'model.country': 'model.city ? model.city.slice(0, 2) : ""',
         },
-        /*         hooks: {
-          onInit: (field?: FormlyFieldConfig) => {
+        hooks: {
+          onInit: (field?: FormlyFieldConfig, model?: any) => {
             if (field && field.templateOptions && field.form) {
-              field.templateOptions.options = field.form
+              field.form
                 .get('city')
-                ?.valueChanges.pipe(
-                  startWith(this.model.country),
-                  switchMap((cityValue) =>
-                    this.ds.getCountries(
-                      cityValue ? cityValue.slice(0, 2) : ''
-                    )
-                  )
-                );
+                ?.valueChanges.subscribe((change) => {
+                  if (change) {
+                    field.form
+                      ?.get('country')
+                      ?.setValue(change.slice(0, 2));
+                  }
+                  return change;
+                });
             }
           },
-        }, */
+        },
       },
     ];
   }
