@@ -1,0 +1,14 @@
+{
+  "AGENT": {
+    "NAME": "Agent-Name"
+  },
+
+  "TEAM": {
+    "SIZE": "Desired Team Size"
+  },
+
+  "MISSION": {
+    "AVAILABLE": "Available Missions",
+    "COUNTRY": "Country of the selected mission"
+  }
+}

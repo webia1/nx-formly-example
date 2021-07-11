@@ -1,0 +1,16 @@
+{
+  "EMPTY": "KEINE TRANSLATION VORHANDEN",
+
+  "AGENT": {
+    "NAME": "Agent-Name"
+  },
+
+  "TEAM": {
+    "SIZE": "Gewünschte Teamgröße"
+  },
+
+  "MISSION": {
+    "AVAILABLE": "Verfügbare Missionen",
+    "COUNTRY": "Einsatzland der Mission"
+  }
+}

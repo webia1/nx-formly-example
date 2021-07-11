@@ -8,8 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -17,17 +16,35 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { dataCyExtension } from './customizations/formly/data-cy.extension';
-import { TranslateModule } from '@ngx-translate/core';
 
 // Angular Material Module
 import { MatTabsModule } from '@angular/material/tabs';
+
+// FORMLY AND EXTENSIONS
+
+import { FormlyModule, FORMLY_CONFIG } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { NgSelectModule } from '@ng-select/ng-select';
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateService,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { dataCyExtension } from './customizations/formly/data-cy.extension';
+import { registerTranslateExtension } from './customizations/formly/translate.extension';
 
 // Validation Message Functions
 
 export function minValidationMessage(err: any) {
   return `Min value ${err.min}. Your value: ${err.actual}`;
+}
+
+// HTTPLoaderFactory
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, 'assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -41,8 +58,14 @@ export function minValidationMessage(err: any) {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: 'de',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
     FormlyModule.forRoot({
       extras: { lazyRender: true },
@@ -83,7 +106,14 @@ export function minValidationMessage(err: any) {
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsDispatchPluginModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FORMLY_CONFIG,
+      multi: true,
+      useFactory: registerTranslateExtension,
+      deps: [TranslateService],
+    },
+  ],
   bootstrap: [AppComponent],
   exports: [DashboardComponent],
 })

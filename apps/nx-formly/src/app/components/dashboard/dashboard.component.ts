@@ -5,12 +5,9 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import {
-  FormlyFieldConfig,
-  FormlyFormOptions,
-} from '@ngx-formly/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
-import { map, startWith, switchMap, tap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'nx-formly-dashboard',
@@ -28,7 +25,7 @@ export class DashboardComponent implements OnInit {
   };
   fields: FormlyFieldConfig[];
 
-  constructor(private ds: DataService) {
+  constructor(private ds: DataService, private ts: TranslateService) {
     this.fields = [
       {
         key: 'id',
@@ -37,7 +34,7 @@ export class DashboardComponent implements OnInit {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Agent Name',
+          label: 'AGENT.NAME',
           placeholder: 'Enter name',
           required: true,
         },
@@ -47,7 +44,7 @@ export class DashboardComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'number',
-          label: 'Desired team size',
+          label: 'TEAM.SIZE',
           placeholder: 'Enter desired team size',
           required: true,
           min: 3,
@@ -64,7 +61,7 @@ export class DashboardComponent implements OnInit {
         type: 'ebia-ng-select',
 
         templateOptions: {
-          label: 'Available Missions',
+          label: 'MISSION.AVAILABLE',
           placeholder: 'Current mission in',
           required: true,
           options: this.ds.getCities(),
@@ -74,7 +71,7 @@ export class DashboardComponent implements OnInit {
         key: 'country',
         type: 'select',
         templateOptions: {
-          label: 'Country of the selected misson',
+          label: 'MISSION.COUNTRY',
           options: this.ds.getCountries(),
           readonly: true,
         },
@@ -99,6 +96,9 @@ export class DashboardComponent implements OnInit {
         }, */
       },
     ];
+
+    ts.setDefaultLang('de');
+    ts.use('de');
   }
 
   /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
