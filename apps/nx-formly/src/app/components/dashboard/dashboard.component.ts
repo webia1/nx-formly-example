@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         key: 'city',
-        type: 'nx-formly-ng-select',
+        type: 'ebia-ng-select',
 
         templateOptions: {
           label: 'Available Missions',

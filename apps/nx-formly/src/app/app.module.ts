@@ -53,7 +53,7 @@ export function minValidationMessage(err: any) {
       ],
       types: [
         {
-          name: 'ebia-autocomplete',
+          name: 'ebia-ng-select',
           component: NgSelectFormlyComponent,
         },
       ],

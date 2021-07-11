@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/core';
 
@@ -18,6 +18,5 @@ import { FieldType } from '@ngx-formly/core';
   `,
 })
 export class NgSelectFormlyComponent extends FieldType {
-  formControl: FormControl = new FormControl();
-  showError = false;
+  formControl!: FormControl;
 }
