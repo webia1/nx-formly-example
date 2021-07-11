@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         key: 'city',
-        type: 'select',
+        type: 'nx-formly-ng-select',
 
         templateOptions: {
           label: 'Available Missions',

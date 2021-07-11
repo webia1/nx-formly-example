@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { NgSelectFormlyComponent } from './customizations/formly/ng-select.type';
 import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,8 +17,9 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
+import { NgSelectModule } from '@ng-select/ng-select';
 
-// Angular Materian Module
+// Angular Material Module
 import { MatTabsModule } from '@angular/material/tabs';
 
 // Validation Message Functions
@@ -27,11 +29,16 @@ export function minValidationMessage(err: any) {
 }
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    NgSelectFormlyComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     FormlyModule.forRoot({
       extras: { lazyRender: true },
       validationMessages: [
@@ -42,6 +49,12 @@ export function minValidationMessage(err: any) {
         {
           name: 'min',
           message: minValidationMessage,
+        },
+      ],
+      types: [
+        {
+          name: 'ebia-autocomplete',
+          component: NgSelectFormlyComponent,
         },
       ],
     }),
