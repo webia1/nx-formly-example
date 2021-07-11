@@ -19,6 +19,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { dataCyExtension } from './customizations/formly/data-cy.extension';
+import { TranslateModule } from '@ngx-translate/core';
 
 // Angular Material Module
 import { MatTabsModule } from '@angular/material/tabs';
@@ -40,6 +41,9 @@ export function minValidationMessage(err: any) {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+    }),
     FormlyModule.forRoot({
       extras: { lazyRender: true },
       validationMessages: [
