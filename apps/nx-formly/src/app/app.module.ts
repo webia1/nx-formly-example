@@ -18,6 +18,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { dataCyExtension } from './customizations/formly/data-cy.extension';
 
 // Angular Material Module
 import { MatTabsModule } from '@angular/material/tabs';
@@ -55,6 +56,12 @@ export function minValidationMessage(err: any) {
         {
           name: 'ebia-ng-select',
           component: NgSelectFormlyComponent,
+        },
+      ],
+      extensions: [
+        {
+          name: 'data-cy-extension',
+          extension: dataCyExtension,
         },
       ],
     }),
