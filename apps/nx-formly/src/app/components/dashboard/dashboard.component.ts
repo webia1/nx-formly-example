@@ -96,9 +96,6 @@ export class DashboardComponent implements OnInit {
         }, */
       },
     ];
-
-    ts.setDefaultLang('de');
-    ts.use('de');
   }
 
   /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
